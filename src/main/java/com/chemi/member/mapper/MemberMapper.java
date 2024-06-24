@@ -4,6 +4,7 @@ import com.chemi.member.vo.MemberVo;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 @Mapper
 public interface MemberMapper {
@@ -14,4 +15,13 @@ public interface MemberMapper {
 
   @Select("SELECT * FROM MEMBER WHERE ID = #{id} AND PWD = #{pwd}")
   String login(MemberVo vo);
+
+  @Select("SELECT * FROM MEMBER WHERE PHONE = #{phone} AND EMAIL = #{email}")
+  MemberVo selectId(MemberVo vo);
+
+  @Select("SELECT * FROM MEMBER WHERE ID = #{id} AND EMAIL = #{email} AND PHONE = #{phone}")
+  MemberVo selectPwd(MemberVo vo);
+
+  @Update("UPDATE MEMBER SET PWD = #{pwd} WHERE ID = #{id} AND PHONE = #{phone} AND EMAIL = #{email}")
+  int changePwd(MemberVo vo);
 }
