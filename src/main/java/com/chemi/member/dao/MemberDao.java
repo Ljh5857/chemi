@@ -19,4 +19,18 @@ public class MemberDao {
 
     return mapper.login(vo);
   }
+
+  public MemberVo selectId(MemberVo vo) {
+
+    return mapper.selectId(vo);
+  }
+
+  public MemberVo selectPwd(MemberVo vo) {
+
+    return mapper.selectPwd(vo);
+  }
+
+  public int changePwd(MemberVo vo) {
+    return mapper.changePwd(vo);
+  }
 }

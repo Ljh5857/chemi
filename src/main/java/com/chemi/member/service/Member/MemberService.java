@@ -22,4 +22,23 @@ public class MemberService {
 
     return dao.login(vo);
   }
+
+  public MemberVo selectId(MemberVo vo) {
+    return dao.selectId(vo);
+  }
+
+  public MemberVo selectPwd(MemberVo vo) {
+    return dao.selectPwd(vo);
+  }
+
+  public String changePwd(MemberVo vo) {
+
+    int result = dao.changePwd(vo);
+
+    if (result > 0) {
+      return "비밀번호 변경 성공";
+    }else {
+      return "비밀번호 변경 실패";
+    }
+  }
 }

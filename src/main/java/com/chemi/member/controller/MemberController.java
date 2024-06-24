@@ -40,4 +40,23 @@ public String login(MemberVo vo){
 
 
 }
+
+@GetMapping("selectId")
+public MemberVo selectId(MemberVo vo){
+
+  return service.selectId(vo);
+}
+
+@GetMapping("selectPwd")
+public MemberVo selectPwd(MemberVo vo){
+
+  return service.selectPwd(vo);
+}
+
+public String changePwd(MemberVo vo){
+
+  return service.changePwd(vo);
+}
+
+
 }
