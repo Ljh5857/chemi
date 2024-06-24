@@ -32,10 +32,12 @@ public int join(MemberVo vo){
   return result;
 
 }
-
+@GetMapping("login")
 public String login(MemberVo vo){
-
+  System.out.println("MemberController.login");
+  System.out.println("vo = " + vo);
   return service.login(vo);
+
 
 }
 }
