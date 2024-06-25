@@ -24,4 +24,7 @@ public interface MemberMapper {
 
   @Update("UPDATE MEMBER SET PWD = #{pwd} WHERE ID = #{id} AND PHONE = #{phone} AND EMAIL = #{email}")
   int changePwd(MemberVo vo);
+
+  @Update("UPDATE MEMBER SET DEL_YN = 'Y' WHERE NO = #{no}")
+  int deluser(MemberVo vo);
 }

@@ -2,28 +2,28 @@ package com.chemi.member.controller;
 
 import com.chemi.member.service.Member.MemberService;
 import com.chemi.member.vo.MemberVo;
+import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 
 @RequiredArgsConstructor
-@RestController
+@Controller
 @RequestMapping("member")
 public class MemberController {
 
   
   private final MemberService service;
 
-//@GetMapping("join")
-//public String join(){
-//
-//  return "member/join";
-//
-//}
+  @GetMapping("join")
+  public String join() {
+
+    return "member/join";
+  }
+
 
 @PostMapping("join")
-@ResponseBody
 public int join(MemberVo vo){
 
   System.out.println("vo = " + vo);
@@ -33,10 +33,14 @@ public int join(MemberVo vo){
 
 }
 @GetMapping("login")
-public String login(MemberVo vo){
-  System.out.println("MemberController.login");
-  System.out.println("vo = " + vo);
-  return service.login(vo);
+public String login(@RequestBody MemberVo vo, HttpSession ss){
+  String loginResult = service.login(vo);
+
+  if ("success".equals(loginResult)){
+    ss.setAttribute("member",vo);
+  }
+
+  return loginResult;
 
 
 }
@@ -52,11 +56,16 @@ public MemberVo selectPwd(MemberVo vo){
 
   return service.selectPwd(vo);
 }
-
-public String changePwd(MemberVo vo){
+@PutMapping("changePwd")
+public String changePwd(@RequestBody MemberVo vo){
 
   return service.changePwd(vo);
 }
 
+@PostMapping("deluser")
+  public String deluser(MemberVo vo){
+
+    return service.deluser(vo);
+}
 
 }
