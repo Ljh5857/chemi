@@ -13,7 +13,6 @@ pageEncoding="UTF-8"%>
 		<meta name="description" content="JSOFT Admin - Responsive HTML5 Template">
 		<meta name="author" content="JSOFT.net">
        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-
 		<jsp:include page="/resources/commonCssAdmin.jsp"/>
 
 	</head>
@@ -32,7 +31,7 @@ pageEncoding="UTF-8"%>
 
 				<section role="main" class="content-body" style="padding-top: 0px;">
 
-					<h3><strong>감성캠프 사이트 통계</strong></h3>
+					<h3><strong>캠팟 사이트 통계</strong></h3>
 
 						<div class="row">
 
