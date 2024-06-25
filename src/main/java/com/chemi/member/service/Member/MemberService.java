@@ -41,4 +41,16 @@ public class MemberService {
       return "비밀번호 변경 실패";
     }
   }
+
+  public String deluser(MemberVo vo) {
+
+    int result = dao.deluser(vo);
+
+    if (result > 0){
+      return "회원탈퇴 성공";
+    }else {
+      return "회원탈퇴 실패";
+    }
+
+  }
 }

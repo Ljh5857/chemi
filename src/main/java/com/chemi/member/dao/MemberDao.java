@@ -33,4 +33,8 @@ public class MemberDao {
   public int changePwd(MemberVo vo) {
     return mapper.changePwd(vo);
   }
+
+  public int deluser(MemberVo vo) {
+    return mapper.deluser(vo);
+  }
 }
