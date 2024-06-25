@@ -17,14 +17,26 @@ public class OwnerController {
 
     private final OwnerService service;
 
+    @GetMapping("main")
+    public String mainPage(){
+
+        return "owner/OwnerMain";
+    }
+
     //로그인
     @PostMapping("login")
     public String login(OwnerVo vo , HttpServletRequest req){
         HttpSession session = req.getSession();
         OwnerVo loginOwnerVo = service.login(vo);
-        session.setAttribute("alertMsg", vo.getName() + "님 환영합니다 ~~!!");
-        session.setAttribute("loginOwnerVo" , loginOwnerVo);
-        return "home";
+
+        if(loginOwnerVo != null){
+            session.setAttribute("loginOwnerVo" , loginOwnerVo);
+            session.setAttribute("alertMsg", vo.getName() + "님 환영합니다 ~~!!");
+            return "owner/OwnerMain";
+        }else{
+            req.setAttribute("errMsg" , "로그인 실패...");
+            return "owner/login";
+        }
     }
     //회원가입
     @PostMapping("join")
