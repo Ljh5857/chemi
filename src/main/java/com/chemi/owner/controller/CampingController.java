@@ -21,7 +21,18 @@ public class CampingController {
 
     private final CampingService service;
 
+    //내 캠핑장 등록하기 (화면)
+    @GetMapping("camp/insert")
+    public String insertCamp(){
+        return "owner/camping/insert";
+    }
+
     //내 캠핑장 등록하기
+    @PostMapping("camp/insert")
+    public String insertCamp(CampingVo vo){
+        int result = service.insertCamp(vo);
+        return "";
+    }
 
 
     //내 캠핑장 정보 불러오기
@@ -35,16 +46,13 @@ public class CampingController {
         return "owner/camping";
     }
     //캠핑장 정보 수정
+    //주요시설 정보 수정(화면)
+    //주요시설 정보 수정(처리)
+    //캠핑장 일정 관리(캘린더api)
 
-    //캠핑장 공지사항 불러오기
-    @PostMapping("camping/notice")
-    public void getCampNotice(HttpServletRequest req , Model model){
-        HttpSession session = req.getSession();
-        OwnerVo loginOwnerVo = (OwnerVo) session.getAttribute("loginOwnerVo");
-        String no = loginOwnerVo.getNo();
-//        List<> campNoticeList = service.getCampNotice(no);
-    }
-    //캠핑장 공지사항 작성하기
+
+
+
 
     //예약리스트
 
