@@ -35,7 +35,7 @@ public class CampingController {
     }
 
 
-    //내 캠핑장 정보 불러오기
+    //내 캠핑장 정보(화면)
     @GetMapping("camping")
     public String getCampListByNo(HttpServletRequest req , Model model){
         HttpSession session = req.getSession();
@@ -46,16 +46,39 @@ public class CampingController {
         return "owner/camping";
     }
     //캠핑장 정보 수정
+    @PostMapping("camping")
+    public String editCamp(HttpServletRequest req , CampingVo vo) throws Exception {
+        HttpSession session = req.getSession();
+        OwnerVo loginOwnerVo = (OwnerVo) session.getAttribute("loginOwnerVo");
+        String ownerNo = loginOwnerVo.getNo();
+        String tel = req.getParameter("tel");
+        int result = service.editCamp(tel , ownerNo);
+
+        if(result != 1){
+            throw new Exception("정보수정에 실패하였습니다.");
+        }
+        return "owner/OwnerMain";
+
+    }
+
+    //주요시설 정보 업데이트(화면)
+    //주요시설 정보 업데이트(처리)
+
     //주요시설 정보 수정(화면)
+    @GetMapping("facility")
+    public String facilityView(HttpServletRequest req , Model model){
+        HttpSession session = req.getSession();
+        OwnerVo loginOwnerVo = (OwnerVo) session.getAttribute("loginOwnerVo");
+        String no = loginOwnerVo.getNo();
+        CampingVo campVo = service.getCampByNo(no);
+        model.addAttribute("campVo" , campVo);
+        return "owner/facility";
+    }
+
     //주요시설 정보 수정(처리)
+
     //캠핑장 일정 관리(캘린더api)
 
 
-
-
-
-    //예약리스트
-
-    //예약
 
 }
