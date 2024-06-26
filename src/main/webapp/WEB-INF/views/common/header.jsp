@@ -147,7 +147,7 @@
          <jsp:include page="../user/loginModal.jsp" />
 
          <!-- findIdPwdModal -->
-         <jsp:include page="/view/user/findIdPwdModal.jsp" />
+         <jsp:include page="/WEB-INF/views/user/findIdPwdModal.jsp" />
 
          <script>
             $(function () {
