@@ -528,8 +528,8 @@ placeholder
 
 				<script src="../../resources/lib/bootstrap-maxlength/bootstrap-maxlength.js"></script>
 				<script src="../../resources/lib/ios7-switch/ios7-switch.js"></script>
-				<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-				<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+				<script src="https://oss.maxcdn.com/libs/html5shiv/  /html5shiv.js"></script>
+				<script src="https://oss.maxcdn.com/libs/respond.js/ /respond.min.js"></script>
 				<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
 				<script type="text/javascript"
 					src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js"></script>

@@ -600,7 +600,7 @@ also surfaced, if your graphs are slow in IE, you may want to give it a spin:
  - Fix bug with passing non-array 0 data (for plugins that don't expect
    arrays, patch by vpapp1).
 
- - Fix errors in JSON in examples so they work with jQuery 1.4.2
+ - Fix errors in JSON in examples so they work with jQuery  
    (fix reported by honestbleeps, issue 357).
 
  - Fix bug with tooltip in interacting.html, this makes the tooltip

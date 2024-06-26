@@ -75,13 +75,13 @@
 			<section class="body">
 
 				<!-- start: header -->
-				<jsp:include page="../../view/common/adminHeader.jsp" />
+				<jsp:include page="../../views/common/adminHeader.jsp" />
 
 				<!-- end: header -->
 
 				<div class="inner-wrapper">
 					<!-- start: sidebar -->
-					<jsp:include page="../../view/common/adminSidebar.jsp" />
+					<jsp:include page="../../views/common/adminSidebar.jsp" />
 					<!-- end: sidebar -->
 
 					<section role="main" class="content-body">

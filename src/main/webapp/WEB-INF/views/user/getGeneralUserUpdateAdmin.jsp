@@ -43,8 +43,8 @@
 				}
 			</style>
 
-			<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-			<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+			<script src="https://oss.maxcdn.com/libs/html5shiv/  /html5shiv.js"></script>
+			<script src="https://oss.maxcdn.com/libs/respond.js/ /respond.min.js"></script>
 			<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 
 

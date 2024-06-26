@@ -364,7 +364,7 @@ v1.4.6 (2010-05-31)
 	- methods: select, unselect
 - when dragging an event, the highlighting reflects the duration of the event
 - code compressing by Google Closure Compiler
-- bundled with jQuery 1.4.2 and jQuery UI 1.8.1
+- bundled with jQuery   and jQuery UI 1.8.1
 
 
 v1.4.5 (2010-02-21)
@@ -410,7 +410,7 @@ v1.4.3 (2009-12-22)
 	- dynamically setting calendar height when no events have been fetched, throws error
 
 
-v1.4.2 (2009-12-02)
+v  (2009-12-02)
 -------------------
 
 - eventAfterRender trigger
