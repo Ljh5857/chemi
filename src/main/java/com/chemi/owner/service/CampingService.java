@@ -17,11 +17,12 @@ public class CampingService {
         return dao.getCampByNo(no);
     }
 
-    public List<CampingVo> getCampNotice(String no) {
-        return dao.getCampNotice(no);
-    }
 
     public int insertCamp(CampingVo vo) {
         return dao.insertCamp(vo);
+    }
+
+    public int editCamp(String tel, String ownerNo) {
+        return dao.editCamp(tel , ownerNo);
     }
 }
