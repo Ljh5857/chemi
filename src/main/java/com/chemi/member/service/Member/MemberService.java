@@ -42,9 +42,9 @@ public class MemberService {
     }
   }
 
-  public String deluser(MemberVo vo) {
+  public String delUser(MemberVo vo) {
 
-    int result = dao.deluser(vo);
+    int result = dao.delUser(vo);
 
     if (result > 0){
       return "회원탈퇴 성공";
@@ -52,5 +52,10 @@ public class MemberService {
       return "회원탈퇴 실패";
     }
 
+  }
+
+  public String myPage(MemberVo vo) {
+
+    return dao.myPage(vo);
   }
 }

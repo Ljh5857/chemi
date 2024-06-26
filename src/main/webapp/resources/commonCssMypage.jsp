@@ -44,7 +44,7 @@ pageEncoding="UTF-8"%>
 	<link rel="stylesheet" href="../../resources/lib/jquery-ui/css/ui-lightness/jquery-ui-1.10.4.custom.css" />
 	<link rel="stylesheet" href="../../resources/lib/bootstrap-multiselect/bootstrap-multiselect.css" />
 	<link rel="stylesheet" href="../../resources/lib/morris/morris.css" />
-	<link rel="stylesheet" href="../../resources/css/theme.css" />
+	<link rel="stylesheet" href="../../resources/css/" />
 	<link rel="stylesheet" href="../../resources/css/skins/default.css" />
 	<link rel="stylesheet" href="../../resources/css/theme-custom.css">
 	<script src="../../resources/lib/modernizr/modernizr.js"></script>

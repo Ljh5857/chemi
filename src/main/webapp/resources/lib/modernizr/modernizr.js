@@ -264,7 +264,7 @@ window.Modernizr = (function( window, document, undefined ) {
     modElem = inputElem = null;
 
     ;(function(window, document) {
-                var version = '3.7.0';
+                var version = '  ';
 
             var options = window.html5 || {};
 

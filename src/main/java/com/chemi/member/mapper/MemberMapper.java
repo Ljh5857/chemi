@@ -26,5 +26,9 @@ public interface MemberMapper {
   int changePwd(MemberVo vo);
 
   @Update("UPDATE MEMBER SET DEL_YN = 'Y' WHERE NO = #{no}")
-  int deluser(MemberVo vo);
+  int delUser(MemberVo vo);
+
+  @Select("SELECT * FROM MEMBER WHERE NO = #{no}")
+  String myPage(MemberVo vo);
+
 }

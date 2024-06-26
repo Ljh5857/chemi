@@ -34,7 +34,12 @@ public class MemberDao {
     return mapper.changePwd(vo);
   }
 
-  public int deluser(MemberVo vo) {
-    return mapper.deluser(vo);
+  public int delUser(MemberVo vo) {
+    return mapper.delUser(vo);
+  }
+
+  public String myPage(MemberVo vo) {
+
+    return mapper.myPage(vo);
   }
 }
