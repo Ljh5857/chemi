@@ -10,21 +10,23 @@ import org.springframework.web.bind.annotation.*;
 
 @RequiredArgsConstructor
 @Controller
-@RequestMapping("member")
+@RequestMapping("user")
 public class MemberController {
 
   
   private final MemberService service;
 
-  @GetMapping("join")
-  public String join() {
+  @GetMapping("addUser")
+  public String addUser() {
 
-    return "member/join";
+    return "user/addGeneralUser";
   }
 
 
-@PostMapping("join")
-public int join(MemberVo vo) throws Exception {
+
+@PostMapping("addUser")
+public int join(MemberVo vo){
+
 
   System.out.println("vo = " + vo);
   int result = service.join(vo);
@@ -62,10 +64,17 @@ public String changePwd(@RequestBody MemberVo vo){
   return service.changePwd(vo);
 }
 
-@PostMapping("deluser")
-  public String deluser(MemberVo vo){
+@PostMapping("delUser")
+  public String delUser(MemberVo vo){
 
-    return service.deluser(vo);
+    return service.delUser(vo);
+}
+
+
+@GetMapping("myPage")
+  public String myPage(MemberVo vo){
+
+    return service.myPage(vo);
 }
 
 }

@@ -5,6 +5,8 @@ import com.chemi.owner.vo.CampingVo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 @RequiredArgsConstructor
 public class CampingDao {
@@ -13,5 +15,15 @@ public class CampingDao {
 
     public CampingVo getCampByNo(String no) {
         return mapper.getCampByNo(no);
+    }
+
+
+
+    public int insertCamp(CampingVo vo) {
+        return mapper.insertCamp(vo);
+    }
+
+    public int editCamp(String tel, String ownerNo) {
+        return mapper.editCamp(tel , ownerNo);
     }
 }

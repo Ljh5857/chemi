@@ -43,9 +43,9 @@ public class MemberService {
     }
   }
 
-  public String deluser(MemberVo vo) {
+  public String delUser(MemberVo vo) {
 
-    int result = dao.deluser(vo);
+    int result = dao.delUser(vo);
 
     if (result > 0){
       return "회원탈퇴 성공";
@@ -54,6 +54,7 @@ public class MemberService {
     }
 
   }
+
 
 
   private boolean isValidName(String name) {
@@ -88,5 +89,10 @@ public class MemberService {
     if(!isValidEmail(vo.getEmail())) {
       throw new Exception("이메일 형식이 올바르지 않습니다.");
     }
+
+  public String myPage(MemberVo vo) {
+
+    return dao.myPage(vo);
+
   }
 }
