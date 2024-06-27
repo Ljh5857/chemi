@@ -22,7 +22,7 @@ public interface MemberMapper {
   @Select("SELECT * FROM MEMBER WHERE ID = #{id} AND EMAIL = #{email} AND PHONE = #{phone}")
   MemberVo selectPwd(MemberVo vo);
 
-  @Update("UPDATE MEMBER SET PWD = #{pwd} WHERE ID = #{id} AND PHONE = #{phone} AND EMAIL = #{email}")
+  @Update("UPDATE MEMBER SET PWD = #{pwd} WHERE ID = #{id} AND NO = #{no} AND PHONE = #{phone} AND EMAIL = #{email}")
   int changePwd(MemberVo vo);
 
   @Update("UPDATE MEMBER SET DEL_YN = 'Y' WHERE NO = #{no}")

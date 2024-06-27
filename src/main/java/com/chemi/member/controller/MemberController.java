@@ -23,8 +23,10 @@ public class MemberController {
   }
 
 
+
 @PostMapping("addUser")
 public int join(MemberVo vo){
+
 
   System.out.println("vo = " + vo);
   int result = service.join(vo);
