@@ -24,7 +24,7 @@ public class MemberController {
 
 
 @PostMapping("join")
-public int join(MemberVo vo){
+public int join(MemberVo vo) throws Exception {
 
   System.out.println("vo = " + vo);
   int result = service.join(vo);
