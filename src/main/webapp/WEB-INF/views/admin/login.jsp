@@ -14,7 +14,7 @@
         </div>
         <div>
             <label for="password">Password: </label>
-            <input type="password" id="password" name="password">
+            <input type="password" id="pwd" name="pwd">
         </div>
         <div>
             <button type="submit">Login</button>

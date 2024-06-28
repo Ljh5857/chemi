@@ -10,8 +10,8 @@
     <form action="/admin/productUpdate" method="post">
         <label for="productNo">Product No:</label>
         <select id="productNo" name="no">
-            <option value="1">Product 1</option>
-            <option value="2">Product 2</option>
+            <option value="1" name = "1" id = "1">Product 1</option>
+            <option value="2" name = "2" id = "1">Product 2</option>
         </select>
         <br><br>
         <label for="categoryNo">Category No:</label>
@@ -30,6 +30,25 @@
         <input type="text" id="stock" name="stock">
         <br><br>
         <button type="submit">Update</button>
+        <button type="button" onclick="deleteProduct()">Delete</button>
+
     </form>
 </body>
+<script>
+        function deleteProduct() {
+            const productNo = document.getElementById("productNo").value;
+            if (confirm(`Are you sure you want to delete product ${productNo}?`)) {
+                fetch(`/admin/productDelete?no=${productNo}`, {
+                    method: 'DELETE'
+                }).then(response => {
+                    if (response.ok) {
+                        alert('Product deleted successfully');
+                        window.location.reload();
+                    } else {
+                        alert('Failed to delete product');
+                    }
+                });
+            }
+        }
+    </script>
 </html>
