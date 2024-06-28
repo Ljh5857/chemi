@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
@@ -24,14 +25,19 @@ public class CampingController {
     //내 캠핑장 등록하기 (화면)
     @GetMapping("camp/insert")
     public String insertCamp(){
-        return "owner/camping/insert";
+        return "owner/campInsert";
     }
 
     //내 캠핑장 등록하기
     @PostMapping("camp/insert")
-    public String insertCamp(CampingVo vo){
+    public String insertCamp(CampingVo vo) throws Exception {
+        System.out.println("vo = " + vo);
         int result = service.insertCamp(vo);
-        return "";
+        System.out.println("result = " + result);
+        if(result != 1){
+            throw new Exception("등록에 실패하였습니다.");
+        }
+        return "owner/ownerMain";
     }
 
 
@@ -45,6 +51,7 @@ public class CampingController {
         model.addAttribute("voList" , voList);
         return "owner/camping";
     }
+
     //캠핑장 정보 수정
     @PostMapping("camping")
     public String editCamp(HttpServletRequest req , CampingVo vo) throws Exception {
@@ -57,25 +64,17 @@ public class CampingController {
         if(result != 1){
             throw new Exception("정보수정에 실패하였습니다.");
         }
-        return "owner/OwnerMain";
+        return "owner/ownerMain";
 
     }
 
     //주요시설 정보 업데이트(화면)
-    //주요시설 정보 업데이트(처리)
-
-    //주요시설 정보 수정(화면)
     @GetMapping("facility")
-    public String facilityView(HttpServletRequest req , Model model){
-        HttpSession session = req.getSession();
-        OwnerVo loginOwnerVo = (OwnerVo) session.getAttribute("loginOwnerVo");
-        String no = loginOwnerVo.getNo();
-        CampingVo campVo = service.getCampByNo(no);
-        model.addAttribute("campVo" , campVo);
+    public String getFacility(){
         return "owner/facility";
     }
+    //주요시설 정보 업데이트(처리)
 
-    //주요시설 정보 수정(처리)
 
     //캠핑장 일정 관리(캘린더api)
 

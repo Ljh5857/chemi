@@ -22,7 +22,7 @@ pageEncoding="UTF-8"%>
 
 			<!-- start: header -->
 
-			<jsp:include page="../common/adminHeader.jsp"/>
+			<jsp:include page="../common/ownerHeader.jsp"/>
 			<!-- end: header -->
 
 			<div class="inner-wrapper">
@@ -32,7 +32,7 @@ pageEncoding="UTF-8"%>
 
 				<section role="main" class="content-body" style="padding-top: 0px;">
 
-					<h3><strong>감성캠프 사이트 통계</strong></h3>
+					<h3><strong>캠핑장 관리자</strong></h3>
 
 						<div class="row">
 
@@ -49,11 +49,11 @@ pageEncoding="UTF-8"%>
 												<div class="summary">
 													<h4 class="title">예약자 수</h4>
 													<div class="info">
-														<!-- <strong class="amount">${reservationStatistics.dayCount} 건</strong> -->
+														<!-- <strong class="amount">예약건 수 : ? 건</strong> -->
 													</div>
 												</div>
 												<div class="summary-footer">
-													<a class="text-muted text-uppercase">금일 총 예약자 수</a>
+													<a class="text-muted text-uppercase">금일 예약자 수</a>
 												</div>
 											</div>
 										</div>
@@ -72,14 +72,14 @@ pageEncoding="UTF-8"%>
 											</div>
 											<div class="widget-summary-col">
 												<div class="summary">
-													<h4 class="title">처리되지 않은 신고 수</h4>
+													<h4 class="title">내 캠핑장 공지사항</h4>
 													<div class="info">
 														<strong class="amount report-count"></strong>
 														<span class="text-primary"></span>
 													</div>
 												</div>
 												<div class="summary-footer">
-													<a class="text-muted text-uppercase" href="/servicecenter/listReport">신고 내역 바로가기</a>
+													<a class="text-muted text-uppercase" href="">공지사항 바로가기</a>
 												</div>
 											</div>
 										</div>
@@ -97,13 +97,13 @@ pageEncoding="UTF-8"%>
 											</div>
 											<div class="widget-summary-col">
 												<div class="summary">
-													<h4 class="title">미답변 Q&A 수</h4>
+													<h4 class="title">내 캠핑장 리뷰 보기</h4>
 													<div class="info">
 														<strong class="amount qna-count"></strong>
 													</div>
 												</div>
 												<div class="summary-footer">
-													<a class="text-muted text-uppercase" href="/servicecenter/listQna" >Q&A 바로 가기</a>
+													<a class="text-muted text-uppercase" href="" >리뷰 바로가기</a>
 												</div>
 											</div>
 										</div>
@@ -123,13 +123,13 @@ pageEncoding="UTF-8"%>
 											</div>
 											<div class="widget-summary-col">
 												<div class="summary">
-													<h4 class="title">사이트수익</h4>
+													<h4 class="title">캠핑장 수익</h4>
 													<div class="info">
-														<!-- <strong class="amount">${siteProfitStatistics.profitAllPayment} ₩</strong> -->
+														<!-- <strong class="amount">수익 정보</strong> -->
 													</div>
 												</div>
 												<div class="summary-footer">
-													<!-- <a class="text-muted text-uppercase">${siteProfitStatistics.profitRegDate}</a> -->
+													<!-- <a class="text-muted text-uppercase"></a> -->
 												</div>
 											</div>
 										</div>
@@ -143,32 +143,22 @@ pageEncoding="UTF-8"%>
 
 						<div class="row">
 							<div class="col-md-6">
-								<h3><strong>전년 대비 예약자 수</strong></h3>
+								<h3><strong>예약자 수</strong></h3>
 								<!--차트가 그려질 부분-->
 								<canvas id="reservation_chart"></canvas>
 								<div style="text-align: center; padding: 10px;">
-									<span>일/주/월/년 예약자수 비교</span>
+									<span>예약자수</span>
 								</div>
-								<!-- <input type="hidden" id="reservation_statistics_data"
-										day="${reservationStatistics.dayCount}"
-										week="${reservationStatistics.weekCount}"
-										month="${reservationStatistics.monthCount}"
-										year="${reservationStatistics.yearCount}"
+								<input type="hidden" id="reservation_statistics_data"
+
 										beforeday="${reservationStatistics.beforeYearDayCount}"
 										beforeweek="${reservationStatistics.beforeYearWeekCount}"
 										beforemonth= "${reservationStatistics.beforeYearMonthCount}"
-										beforeyear="${reservationStatistics.beforeYearYearCount}"> -->
+
 
 							</div>
 
-							<div class="col-md-6">
-								<h3><strong>사이트 거래액</strong></h3>
-								<!--차트가 그려질 부분-->
-								<canvas id="siteProfit_chart"></canvas>
-								<div style="text-align: center; padding: 10px;">
-									<!-- <span>${siteProfitStatistics.profitRegDate}</span> -->
-								</div>
-							</div>
+
 						</div>
 
 					</section>

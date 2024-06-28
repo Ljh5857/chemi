@@ -23,6 +23,7 @@ window.theme = {};
 		});
 	}
 
+
 	function ensureVisible( li ) {
 		var scroller = li.offsetParent();
 		if ( !scroller.get(0) ) {
