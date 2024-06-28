@@ -23,6 +23,9 @@ public interface AdminMapper {
     @Select("SELECT SEQ_PRODUCT_NO.NEXTVAL AS no FROM DUAL")
     String selectNextProductNo();
 
+    @Select("SELECT SEQ_PRD_IMG_NO.NEXTVAL AS imgNo FROM DUAL")
+    String selectNextProductImgNo();
+
     @Insert("INSERT INTO PRODUCT (NO, CATEGORY_NO, NAME, PRICE, PROD_EXPLAIN, STOCK, CREATE_DATE) " +
             "VALUES (#{no}, #{categoryNo}, #{name}, #{price}, #{prodExplain}, #{stock}, SYSDATE)")
     void insertProduct(ProductVo productVo);
@@ -36,4 +39,9 @@ public interface AdminMapper {
     @Select("SELECT NO, CATEGORY_NO, NAME, PRICE, PROD_EXPLAIN, STOCK FROM PRODUCT")
     List<ProductVo> getAllProducts();
 
+    @Delete("DELETE FROM PRODUCT WHERE NO = #{productNo}")
+    void deleteProduct();
+
+    @Delete("DELETE FROM PRODUCT WHERE NO = #{imgNo}")
+    void deleteProductImg();
 }

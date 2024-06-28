@@ -7,6 +7,8 @@ import com.chemi.admin.vo.PrdImgVo;
 import com.chemi.admin.vo.ProductVo;
 import com.chemi.owner.vo.OwnerVo;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -127,6 +129,18 @@ public class AdminController {
         service.updateProduct(productVo);
         return "redirect:/admin/productList";
     }
+
+    @DeleteMapping("/productDelete")
+    public ResponseEntity<String> deleteProduct(@RequestParam("no") String productNo) {
+        // Product 삭제 로직 처리
+        boolean isDeleted = service.deleteProduct(productNo);
+        if (isDeleted) {
+            return ResponseEntity.ok("Product deleted successfully");
+        } else {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to delete product");
+        }
+    }
+
 
 
 

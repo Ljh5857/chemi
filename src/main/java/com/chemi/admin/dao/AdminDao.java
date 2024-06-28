@@ -34,6 +34,10 @@ public class AdminDao {
         return mapper.selectNextProductNo();
     }
 
+    public String selectNextProductImgNo() {
+        return mapper.selectNextProductImgNo();
+    }
+
 
     public void insertProduct(ProductVo productVo) {
         mapper.insertProduct(productVo);
@@ -52,4 +56,12 @@ public class AdminDao {
         return mapper.getAllProducts();
     }
 
+    public void deleteProduct(String productNo) {
+        mapper.deleteProduct();
+    }
+
+
+    public void deleteProductImg(String productImgNo) {
+        mapper.deleteProductImg();
+    }
 }
