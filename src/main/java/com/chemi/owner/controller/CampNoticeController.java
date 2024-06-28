@@ -31,13 +31,13 @@ public class CampNoticeController {
         String no = loginOwnerVo.getNo();
         List<CampNoticeVo> campNoticeList = service.getCampNotice(no);
         model.addAttribute("campNoticeList" , campNoticeList);
-        return "owner/notice/list";
+        return "owner/noticeList";
     }
 
     //캠핑장 공지사항 작성하기 (화면)
     @GetMapping("notice/insert")
     public String insertNotice(){
-        return "owner/notice/insert";
+        return "owner/noticeInsert";
     }
 
     //캠핑장 공지사항 작성하기 (처리)
