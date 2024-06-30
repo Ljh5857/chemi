@@ -21,7 +21,7 @@ public class OwnerController {
     @GetMapping("main")
     public String mainPage(){
 
-        return "owner/ownerMain";
+        return "owner/main";
     }
 
     //로그인 (화면)
@@ -33,15 +33,17 @@ public class OwnerController {
     @PostMapping("login")
     public String login(OwnerVo vo , HttpServletRequest req){
         HttpSession session = req.getSession();
+        System.out.println("vo = " + vo);
         OwnerVo loginOwnerVo = service.login(vo);
 
+        System.out.println("loginOwnerVo = " + loginOwnerVo);
+        
         if(loginOwnerVo != null){
             session.setAttribute("loginOwnerVo" , loginOwnerVo);
             session.setAttribute("alertMsg", vo.getName() + "님 환영합니다 ~~!!");
-            return "owner/OwnerMain";
+            return "owner/main";
         }else{
-            req.setAttribute("errMsg" , "로그인 실패...");
-            return "owner/login";
+            throw new RuntimeException();
         }
     }
     //회원가입(화면)
@@ -52,11 +54,12 @@ public class OwnerController {
     //회원가입
     @PostMapping("join")
     public String join(OwnerVo vo) throws Exception {
+        System.out.println("vo = " + vo);
         int result = service.join(vo);
         if(result != 1){
             throw new Exception("회원가입 실패...");
         }
-        return "owner/login";
+        return "owner/main";
 
     }
     //비밀번호 변경 (화면)
