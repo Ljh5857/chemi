@@ -16,7 +16,7 @@ public class MemberDao {
   }
 
   public String login(MemberVo vo) {
-
+    System.out.println("MemberDao.login");
     return mapper.login(vo);
   }
 

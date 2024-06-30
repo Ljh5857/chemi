@@ -13,7 +13,7 @@ public interface MemberMapper {
   int join(MemberVo vo);
 
 
-  @Select("SELECT * FROM MEMBER WHERE ID = #{id} AND PWD = #{pwd}")
+  @Select("SELECT * FROM MEMBER WHERE ID = #{id} AND PWD = #{pwd} AND DEL_YN = 'N'")
   String login(MemberVo vo);
 
   @Select("SELECT * FROM MEMBER WHERE PHONE = #{phone} AND EMAIL = #{email}")
