@@ -12,7 +12,7 @@
 						style="font-size: 30px;font-weight: 500;margin-bottom: 20px;">로그인</h3>
 				</header>
 				<div class="panel-body">
-					<form id="login-modal-form" action="" class="was-validated">
+					<form id="login-modal-form" action="user/login" class="was-validated">
 						<div class="form-group">
 							<input type="text" class="form-control" id="modalId" placeholder="아이디를 입력하세요." name="id"
 								required>
