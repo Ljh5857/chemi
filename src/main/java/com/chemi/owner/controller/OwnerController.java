@@ -21,7 +21,7 @@ public class OwnerController {
     @GetMapping("main")
     public String mainPage(){
 
-        return "owner/OwnerMain";
+        return "owner/ownerMain";
     }
 
     //로그인 (화면)

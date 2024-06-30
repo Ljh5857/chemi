@@ -14,6 +14,7 @@ public class MemberService {
   private final MemberDao dao;
 
   public int join(MemberVo vo) throws Exception {
+
     // 유효성 검사
     if(vo.getId().length() < 4) {
       throw new Exception("아이디가 짧습니다. 최소 4글자이상.");
@@ -30,8 +31,6 @@ public class MemberService {
     if(!isValidName(vo.getName())) {
       throw new Exception("이름은 한글만 가능합니다.");
     }
-
-
 
     if(!isValidPhone(vo.getPhone())) {
       throw new Exception("휴대폰 번호 형식이 올바르지 않습니다.");
@@ -78,9 +77,8 @@ public class MemberService {
     }
   }
 
-  public String myPage(MemberVo vo) {
-    return dao.myPage(vo);
-  }
+
+
 
   // 유효성 검사 메서드
   private boolean isValidName(String name) {
