@@ -19,9 +19,12 @@ public interface CampingMapper {
     @Insert("INSERT INTO CAMPSITE\n" +
             "(NO,OWNER_NO,NAME, ADDRESS,TEL,INTRODUCTION,BASIC_INFO,ZONE_LAYOUT_IMG,AREA,CAMPSITE_CATEGORY)\n" +
             "VALUES\n" +
-            "(SEQ_CAMPSITE_NO.NEXTVAL,#{ownerNo},#{name},#{address},#{tel},#{introduction},#{basicInfo},#{zoneLayoutImg},#{area},#{campsiteCategory}")
+            "(SEQ_CAMPSITE_NO.NEXTVAL,#{ownerNo},#{name},#{address},#{tel},#{introduction},#{basicInfo},#{zoneImg},#{area},#{campsiteCategory} )")
     int insertCamp(CampingVo vo);
 
     @Update("UPDATE CAMPSITE SET TEL = #{tel} WHERE OWNER_NO = #{ownerNo}")
     int editCamp(String tel, String ownerNo);
+
+    @Update("UPDATE CAMPSITE SET  ")
+    int updateFacility(String name);
 }

@@ -3,6 +3,7 @@ package com.chemi.owner.controller;
 import com.chemi.owner.service.CampingService;
 import com.chemi.owner.vo.CampingVo;
 import com.chemi.owner.vo.OwnerVo;
+import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
@@ -11,13 +12,15 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
-import java.util.List;
+import java.io.File;
+import java.nio.charset.StandardCharsets;
 
 @Controller
 @RequestMapping("owner")
 @RequiredArgsConstructor
+@MultipartConfig
 public class CampingController {
 
     private final CampingService service;
@@ -32,12 +35,21 @@ public class CampingController {
     @PostMapping("camp/insert")
     public String insertCamp(CampingVo vo) throws Exception {
         System.out.println("vo = " + vo);
+        MultipartFile att = vo.getZoneLayoutImg();
+
+        String originName = att.getOriginalFilename();
+        File targetFile = new File("D:\\chemi\\src\\main\\webapp\\resources\\images" + originName);
+
+        String zoneLayoutImg = new String(att.getBytes() , StandardCharsets.UTF_8);
+        vo.setZoneImg(zoneLayoutImg);
+
+
         int result = service.insertCamp(vo);
         System.out.println("result = " + result);
         if(result != 1){
             throw new Exception("등록에 실패하였습니다.");
         }
-        return "owner/ownerMain";
+        return "owner/main";
     }
 
 
@@ -74,7 +86,16 @@ public class CampingController {
         return "owner/facility";
     }
     //주요시설 정보 업데이트(처리)
+    @PostMapping("facility")
+    public String updateFacility(String name){
+        int result = service.updateFacility(name);
 
+        if(result != 1){
+            throw new RuntimeException();
+        }
+
+        return "owner/main";
+    }
 
     //캠핑장 일정 관리(캘린더api)
 

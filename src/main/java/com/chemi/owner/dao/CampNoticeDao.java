@@ -24,4 +24,12 @@ public class CampNoticeDao {
     public CampingVo noticeByNo(String no) {
         return mapper.noticeByNo(no);
     }
+
+    public int edit(CampNoticeVo vo) {
+        return mapper.edit(vo);
+    }
+
+    public CampNoticeVo noticeDetail(String no) {
+        return mapper.noticeDetail(no);
+    }
 }

@@ -1,61 +1,105 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-
 	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+		<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+			<!DOCTYPE html>
+			<html>
 
-		<!-- 로그인 모달 -->
+			<head>
+				<meta charset="UTF-8">
 
-		<div id="modalBasic" class="mfp-hide white-popup-block">
-			<section class="panel">
-				<header class="panel-heading">
-					<!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button> -->
-					<h3 class="modal-title" align="center"
-						style="font-size: 30px;font-weight: 500;margin-bottom: 20px;">로그인</h3>
-				</header>
-				<div class="panel-body">
+				<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+				<jsp:include page="/resources/commonLib.jsp"></jsp:include>
+
+				<title>사업자 회원가입</title>
+
+				<style>
+					.form-group .btn {
+						height: 26px;
+						padding-top: 0;
+						padding-bottom: 0;
+						margin: auto 10px;
+						color: blue;
+					}
+
+					.form-group label {
+						width: 170px;
+					}
+
+					#checkMailAuth {
+						margin-left: 232px;
+						margin-top: 10px;
+
+					}
+
+					.img_business {
+						border: 2px solid #A8A8A8;
+						margin-top: 30px;
+						margin-bottom: 30px;
+						padding-top: 10px;
+						padding-bottom: 10px;
+					}
+
+					.checkFont {
+						font-size: 12px;
+						padding-left: 57px;
+					}
+				</style>
+
+				<script src="https://oss.maxcdn.com/libs/html5shiv/  /html5shiv.js"></script>
+				<script src="https://oss.maxcdn.com/libs/respond.js/ /respond.min.js"></script>
+				<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 
 
-					<form id="login-modal-form" action="/owner/login" method="post" class="was-validated">
-						<div class="form-group">
-							<input type="text" class="form-control" id="modalId" placeholder="아이디를 입력하세요." name="id"
-								required>
-						</div>
-						<div class="form-group">
-							<input type="password" class="form-control" id="pwd" placeholder="비밀번호를 입력하세요."
-								name="pwd" required>
-						</div>
-						<div>
-							<input type="submit" value="로그인">
+			</head>
 
-						</div>
-
-						<div class="find-content">
-							<ul>
-								<li id="joinUser">일반회원 가입</li>
-								<li id="joinBusinessUser">사업자회원 가입</li>
-								<li class="modal-dismiss" data-toggle="modal" data-target="#findIdPwdModal"
-									id="findIdPwd">
-									아이디 찾기/비밀번호 찾기</li>
-							</ul>
-						</div>
-					</form>
-
-
-				</div>
-				<footer>
-					<div class="f-and">
-						<span>또는</span>
+			<body data-spy="scroll" data-target=".onpage-navigation" data-offset="60">
+				<main>
+					<div class="page-loader">
+						<div class="loader">Loading...</div>
 					</div>
-					<div class="kakao">
+					<jsp:include page="../common/header.jsp"></jsp:include>
+					<div class="main">
+						<!-- <section class="module bg-dark-30 about-page-header"
+						data-background="../../resources/images/addGeneralUserImg.png"> -->
+						<div class="container" style="padding-top: 72px;">
+							<img src="../../resources/images/addBusinessUserImg.png" alt="">
+						</div>
+						<!-- </section> -->
+						<section class="module" style="padding-top:0;">
+							<div class="container">
+								<div class="row">
+									<div class="col-sm-8 col-sm-offset-2">
+										<hr class="divider-w mt-10 mb-20">
 
-						<button id="kakaobtn" class="btn btn-g btn-circle" type="button"
-							onclick="javascript:kakaoLogin();">
 
-							<img src="../../resources/images/kakao_login_large_narrow.png" />
-							카카오 로그인
-						</button>
+
+										<form  action="/owner/login" method="post">
+
+
+										<input type="text" name="id" placeholder="아이디를 입력하세여">    
+										<br>
+										<br>
+										<input type="password" name="pwd" placeholder="비밀번호를 입력하세여">    
+										<br>
+										<br>
+										<input type="submit" value="로그인">
+
+										</form>
+
+
+									</div>
+								</div>
+								<br>
+								<div class="col-sm-3 col-sm-offset-2"></div>
+								<div class="col-sm-3 col-sm-offset-2">
+
+								</div>
+							</div>
+						</section>
 					</div>
+				</main>
 
-				</footer>
-			</section>
-		</div>
+				
+			</body>
 
+			</html>
