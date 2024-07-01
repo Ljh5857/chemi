@@ -27,4 +27,8 @@ public class CampingService {
     public int editCamp(String tel, String ownerNo) {
         return dao.editCamp(tel , ownerNo);
     }
+
+    public int updateFacility(String name) {
+        return dao.updateFacility(name);
+    }
 }

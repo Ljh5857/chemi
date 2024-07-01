@@ -2,7 +2,6 @@ package com.chemi.owner.service;
 
 import com.chemi.owner.dao.CampNoticeDao;
 import com.chemi.owner.vo.CampNoticeVo;
-import com.chemi.owner.vo.CampingVo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -22,7 +21,13 @@ public class CampNoticeService {
         return dao.insertNotice(vo);
     }
 
-    public CampingVo noticeByNo(String no) {
-        return dao.noticeByNo(no);
+    public int edit(CampNoticeVo vo) {
+        return dao.edit(vo);
     }
+
+    public CampNoticeVo noticeDetail(String no) {
+        return dao.noticeDetail(no);
+    }
+
+
 }

@@ -59,7 +59,7 @@ public class OwnerController {
         if(result != 1){
             throw new Exception("회원가입 실패...");
         }
-        return "owner/main";
+        return "owner/login";
 
     }
     //비밀번호 변경 (화면)

@@ -35,7 +35,7 @@ pageEncoding="UTF-8"%>
 
 			<hr>
 			<form  action="/owner/camp/insert" method="post" enctype="multipart/form-data" >
-				<input type="text" name="ownerNo" value="${session.no}" hidden>
+				<input type="text" name="ownerNo" value="2" hidden>
 				<input type="text" name="area" placeholder="지역">
 				<br>
 				<br>
@@ -44,11 +44,14 @@ pageEncoding="UTF-8"%>
 				<br>
 				<input type="text" name="name" placeholder="캠핑장 이름">
 				<br>
-				<br>
+                <br>
 				<input type="text" name="tel" placeholder="전화번호">
 				<br>
 				<br>
-			  <input type="text" name="basicInfo" placeholder="한줄 소개를 적어주세요">
+				<input type="text" name="address" placeholder="캠핑장 주소">
+				<br>
+				<br>
+			    <input type="text" name="basicInfo" placeholder="한줄 소개를 적어주세요">
 				<br>
 				<br>
 				<textarea style="width: 400px; height: 300px;" name="introduction" placeholder="캠핑장 소개를 적어주세요"></textarea>

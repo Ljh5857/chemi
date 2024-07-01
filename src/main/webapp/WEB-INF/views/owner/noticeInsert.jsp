@@ -34,8 +34,7 @@ pageEncoding="UTF-8"%>
         <h3><strong>공지사항 등록하기</strong></h3>
 
 			<hr>
-			<form  action="/owner/camp/insert" method="post" enctype="multipart/form-data" >
-				<input type="text" name="campsiteNo" value="" hidden>
+			<form  action="/owner/notice/insert" method="post" enctype="multipart/form-data" >
 				<input type="text" name="title" placeholder="제목">
 				<br>
 				<br>
