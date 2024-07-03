@@ -1,6 +1,6 @@
 package com.chemi.member.controller;
 
-import com.chemi.member.service.Member.MemberService;
+import com.chemi.member.service.MemberService;
 import com.chemi.member.vo.MemberVo;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
@@ -16,7 +16,7 @@ public class MemberController {
 
   @GetMapping("addUser")
   public String addUser() {
-    return "user/addGeneralUser";
+    return "home/main";
   }
 
   @PostMapping("addUser")
@@ -33,10 +33,11 @@ public class MemberController {
     System.out.println("MemberController.login");
     if ("success".equals(loginResult)) {
       ss.setAttribute("member", vo);
+      return "redirect:/home"; // 로그인 성공 시 리다이렉트할 페이지
     }
     System.out.println("vo = " + vo);
     System.out.println("loginResult = " + loginResult);
-    return loginResult;
+    return "redirect:/login?error"; // 로그인 실패 시 리다이렉트할 페이지
   }
 
   @GetMapping("selectId")

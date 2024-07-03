@@ -50,9 +50,7 @@
 
 <body data-spy="scroll" data-target=".onpage-navigation" data-offset="60">
     <main>
-        <div class="page-loader">
-            <div class="loader">Loading...</div>
-        </div>
+
         <jsp:include page="../common/header.jsp"></jsp:include>
         <div class="main">
             <div class="container" style="padding-top: 72px;">
@@ -118,10 +116,16 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="userAddr" class="col-sm-offset-1 col-sm-3 control-label"><strong>상세주소</strong></label>
+                                <label for="detailedAddr" class="col-sm-offset-1 col-sm-3 control-label"><strong>상세주소</strong></label>
                                 <div class="col-sm-6">
-                                    <input id="add_g_userAddr" name="userAddr" class="form-control" type="text" placeholder="상세주소를 입력하세요." />
+                                    <input id="add_g_detailedAddr" name="detailedAddr" class="form-control" type="text" placeholder="상세주소를 입력하세요." />
                                     <input type="hidden" name="allAddr" />
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="email" class="col-sm-offset-1 col-sm-3 control-label"><strong>이메일</strong></label>
+                                <div class="col-sm-6">
+                                    <input id="add_g_email" name="email" class="form-control" type="email" placeholder="이메일을 입력하세요." />
                                 </div>
                             </div>
                             <div class="form-group row">
