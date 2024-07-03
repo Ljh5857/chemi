@@ -5,12 +5,14 @@ import com.chemi.admin.vo.AdminVo;
 import com.chemi.admin.vo.CombinedResponse;
 import com.chemi.admin.vo.PrdImgVo;
 import com.chemi.admin.vo.ProductVo;
+import com.chemi.member.vo.MemberVo;
 import com.chemi.owner.vo.OwnerVo;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.ui.Model;
 
 import java.util.List;
 
@@ -24,10 +26,11 @@ public class AdminService {
     private static final Logger logger = LoggerFactory.getLogger(AdminService.class);
 
     // 관리자 로그인
-    public boolean login(AdminVo adminVo) {
-        AdminVo result = dao.login(adminVo);
-        return result != null;
+    public String login(AdminVo vo) {
+        System.out.println("AdminService.login");
+        return dao.login(vo);
     }
+
 
     // Owner 수락
     public boolean approveOwner(OwnerVo ownerVo) {
@@ -80,14 +83,21 @@ public class AdminService {
     }
 
 
-    public boolean deleteProduct(String productNo) {
+    public boolean deleteProduct(String no) {
+        try {
+            dao.deleteProduct(no);
+            return true;
+        } catch (Exception e) {
+            logger.error("Error deleting product: ", e);
+            return false;
+        }
+    }
 
-        String productImgNo = dao.selectNextProductImgNo();
 
-        // 이미지 먼저 날려야함
-        dao.deleteProductImg(productImgNo);
-        dao.deleteProduct(productNo);
+    public ProductVo getProductByNo(ProductVo vo) {
 
-        return true;
+        return dao.getProductByNo(vo);
+
+
     }
 }

@@ -1,54 +1,43 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Update Product</title>
+    <title>Product List</title>
 </head>
 <body>
-    <h1>Update Product</h1>
-    <form action="/admin/productUpdate" method="post">
-        <label for="productNo">Product No:</label>
-        <select id="productNo" name="no">
-            <option value="1" name = "1" id = "1">Product 1</option>
-            <option value="2" name = "2" id = "1">Product 2</option>
-        </select>
-        <br><br>
-        <label for="categoryNo">Category No:</label>
-        <input type="text" id="categoryNo" name="categoryNo">
-        <br><br>
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name">
-        <br><br>
-        <label for="price">Price:</label>
-        <input type="text" id="price" name="price">
-        <br><br>
-        <label for="prodExplain">Description:</label>
-        <input type="text" id="prodExplain" name="prodExplain">
-        <br><br>
-        <label for="stock">Stock:</label>
-        <input type="text" id="stock" name="stock">
-        <br><br>
-        <button type="submit">Update</button>
-        <button type="button" onclick="deleteProduct()">Delete</button>
-
-    </form>
+    <h1>Product List</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>Category No</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Description</th>
+                <th>Stock</th>
+                <th>Create Date</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <c:forEach items="${product}" var="product">
+                <tr>
+                    <td>${product.no}</td>
+                    <td>${product.categoryNo}</td>
+                    <td>${product.name}</td>
+                    <td>${product.price}</td>
+                    <td>${product.prodExplain}</td>
+                    <td>${product.stock}</td>
+                    <td>${product.createDate}</td>
+                    <td>
+                        <!-- Replace JavaScript function with a direct link -->
+                        <a href="productUpdate?no=${product.no}">Edit</a>
+                    </td>
+                </tr>
+            </c:forEach>
+        </tbody>
+    </table>
 </body>
-<script>
-        function deleteProduct() {
-            const productNo = document.getElementById("productNo").value;
-            if (confirm(`Are you sure you want to delete product ${productNo}?`)) {
-                fetch(`/admin/productDelete?no=${productNo}`, {
-                    method: 'DELETE'
-                }).then(response => {
-                    if (response.ok) {
-                        alert('Product deleted successfully');
-                        window.location.reload();
-                    } else {
-                        alert('Failed to delete product');
-                    }
-                });
-            }
-        }
-    </script>
 </html>

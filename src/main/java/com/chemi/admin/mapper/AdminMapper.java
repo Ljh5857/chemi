@@ -3,18 +3,19 @@ package com.chemi.admin.mapper;
 import com.chemi.admin.vo.AdminVo;
 import com.chemi.admin.vo.PrdImgVo;
 import com.chemi.admin.vo.ProductVo;
+import com.chemi.member.vo.MemberVo;
 import com.chemi.owner.vo.OwnerVo;
 import org.apache.ibatis.annotations.*;
+import org.springframework.ui.Model;
 
 import java.util.List;
 
 @Mapper
 public interface AdminMapper {
 
-    @Select("SELECT * FROM ADMIN WHERE ID = #{id} AND PWD = #{pwd}")
-    AdminVo login(AdminVo adminVo);
 
-    @Update("UPDATE OWNER SET JOIN_APPROVAL_YN = 'Y' WHERE NO = #{ownerVo.No}")
+
+    @Update("UPDATE OWNER SET JOIN_APPROVAL_YN = 'Y' WHERE NO = #{ownerVo.no}")
     boolean updateJoinApproval(@Param("ownerVo") OwnerVo ownerVo);
 
     @Select("SELECT * FROM OWNER WHERE JOIN_APPROVAL_YN = 'N'")
@@ -44,4 +45,10 @@ public interface AdminMapper {
 
     @Delete("DELETE FROM PRODUCT WHERE NO = #{imgNo}")
     void deleteProductImg();
+
+    @Select("SELECT * FROM ADMIN WHERE ID = #{id} AND PWD = #{pwd}")
+    String login(AdminVo vo);
+
+    @Select("SELECT * FROM PRODUCT WHERE NO = #{no}")
+    ProductVo getProductByNo(ProductVo vo);
 }
