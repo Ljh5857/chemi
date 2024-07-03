@@ -5,7 +5,9 @@ import com.chemi.admin.vo.AdminVo;
 import com.chemi.admin.vo.CombinedResponse;
 import com.chemi.admin.vo.PrdImgVo;
 import com.chemi.admin.vo.ProductVo;
+import com.chemi.member.vo.MemberVo;
 import com.chemi.owner.vo.OwnerVo;
+import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -37,19 +39,15 @@ public class AdminController {
     }
 
     @PostMapping("login")
-    public ModelAndView adminLogin(@ModelAttribute AdminVo adminVo) {
-        ModelAndView modelAndView = new ModelAndView();
-
-        boolean isValid = service.login(adminVo);
-
-        if (isValid) {
-            modelAndView.setViewName("admin/adminMain");
-        } else {
-            modelAndView.setViewName("admin/login");
-            modelAndView.addObject("error", "Invalid ID or Password");
+    public String login(AdminVo vo, HttpSession ss) {
+        String loginResult = service.login(vo);
+        System.out.println("AdminController.login");
+        if ("success".equals(loginResult)) {
+            ss.setAttribute("admin", vo);
         }
-
-        return modelAndView;
+        System.out.println("vo = " + vo);
+        System.out.println("loginResult = " + loginResult);
+        return "redirect:/admin/adminMain";
     }
 
     @PostMapping("approveOwner")
@@ -61,7 +59,7 @@ public class AdminController {
 
         if (isApproved) {
             // 성공할 경우 adminMain으로 리다이렉트
-            return new ModelAndView("redirect:/adminMain");
+            return new ModelAndView("redirect:/admin/adminMain");
         } else {
             // 실패할 경우 다시 approveOwner.jsp로 리다이렉트하고 에러 메시지 전달
             redirectAttributes.addFlashAttribute("error", "Approval failed. Please try again.");
@@ -119,9 +117,17 @@ public class AdminController {
 
     @GetMapping("productList")
     public String getProductList(Model model) {
-        List<ProductVo> products = service.getAllProducts();
-        model.addAttribute("products", products);
+        List<ProductVo> product = service.getAllProducts();
+        model.addAttribute("product", product);
         return "admin/productList";
+    }
+
+    @GetMapping("productUpdate")
+    public String showProductUpdate(ProductVo vo) {
+        System.out.println("AdminController.showProductUpdate");
+        service.getProductByNo(vo);
+        System.out.println("vo = " + vo);
+        return "admin/productUpdate";
     }
 
     @PostMapping("productUpdate")
@@ -130,15 +136,15 @@ public class AdminController {
         return "redirect:/admin/productList";
     }
 
-    @DeleteMapping("/productDelete")
-    public ResponseEntity<String> deleteProduct(@RequestParam("no") String productNo) {
-        // Product 삭제 로직 처리
-        boolean isDeleted = service.deleteProduct(productNo);
+    @DeleteMapping("productDelete")
+    public String deleteProduct(@RequestParam("no") String no, RedirectAttributes redirectAttributes) {
+        boolean isDeleted = service.deleteProduct(no);
         if (isDeleted) {
-            return ResponseEntity.ok("Product deleted successfully");
+            redirectAttributes.addFlashAttribute("successMessage", "Product successfully deleted.");
         } else {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to delete product");
+            redirectAttributes.addFlashAttribute("errorMessage", "Failed to delete product.");
         }
+        return "redirect:/admin/productList";
     }
 
 

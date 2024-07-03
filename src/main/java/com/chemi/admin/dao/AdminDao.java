@@ -4,9 +4,11 @@ import com.chemi.admin.mapper.AdminMapper;
 import com.chemi.admin.vo.AdminVo;
 import com.chemi.admin.vo.PrdImgVo;
 import com.chemi.admin.vo.ProductVo;
+import com.chemi.member.vo.MemberVo;
 import com.chemi.owner.vo.OwnerVo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
+import org.springframework.ui.Model;
 
 import java.security.AuthProvider;
 import java.util.List;
@@ -17,10 +19,7 @@ public class AdminDao {
 
     private final AdminMapper mapper;
 
-    public AdminVo login(AdminVo adminVo) {
 
-        return mapper.login(adminVo);
-    }
 
     public boolean updateJoinApproval(OwnerVo ownerVo) {
         return mapper.updateJoinApproval(ownerVo);
@@ -63,5 +62,14 @@ public class AdminDao {
 
     public void deleteProductImg(String productImgNo) {
         mapper.deleteProductImg();
+    }
+
+    public String login(AdminVo vo) {
+        System.out.println("AdminDao.login");
+        return mapper.login(vo);
+    }
+
+    public ProductVo getProductByNo(ProductVo vo) {
+        return mapper.getProductByNo(vo);
     }
 }
