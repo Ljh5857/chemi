@@ -54,4 +54,26 @@
 				</footer>
 			</section>
 		</div>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("#joinUser").click(function() {
+            // 페이지 이동 전 로딩 애니메이션 표시
+            $(".page-loader").show();
 
+            // 페이지 이동 시도
+            $.ajax({
+                url: "${pageContext.request.contextPath}/user/addUser",
+                type: "GET",
+                success: function(response) {
+                    // 페이지 이동 성공 시
+                    window.location.href = "${pageContext.request.contextPath}/user/addUser";
+                },
+                error: function(xhr, status, error) {
+                    // 페이지 이동 실패 시
+                    console.log("Error: " + error);
+                    $(".page-loader").hide(); // 로딩 애니메이션 중단
+                }
+            });
+        });
+    });
+</script>

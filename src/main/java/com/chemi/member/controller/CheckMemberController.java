@@ -1,7 +1,7 @@
 package com.chemi.member.controller;
 
 
-import com.chemi.member.service.Member.CheckMemberService;
+import com.chemi.member.service.CheckMemberService;
 import com.chemi.member.vo.MemberVo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
