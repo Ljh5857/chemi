@@ -3,7 +3,7 @@
     <header class="header">
         <div class="logo-container">
             <a href="/admin" class="logo">
-                <!-- <img src="resources/images/logo.png" height="35" alt="JSOFT Admin" /> -->
+                <!-- <img src="" height="35" alt="JSOFT Admin" /> -->
             </a>
             <div class="visible-xs toggle-sidebar-left" data-toggle-class="sidebar-left-opened" data-target="html"
                 data-fire-event="sidebar-left-opened">

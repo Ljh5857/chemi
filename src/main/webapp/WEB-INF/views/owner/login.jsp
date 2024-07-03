@@ -57,12 +57,12 @@
 					<div class="page-loader">
 						<div class="loader">Loading...</div>
 					</div>
-					<jsp:include page="../common/header.jsp"></jsp:include>
+					<jsp:include page="../common/ownerHeader.jsp"></jsp:include>
 					<div class="main">
 						<!-- <section class="module bg-dark-30 about-page-header"
 						data-background="../../resources/images/addGeneralUserImg.png"> -->
 						<div class="container" style="padding-top: 72px;">
-							<img src="../../resources/images/addBusinessUserImg.png" alt="">
+							<img src="../../resources/images/ownerLogin.png" alt="">
 						</div>
 						<!-- </section> -->
 						<section class="module" style="padding-top:0;">

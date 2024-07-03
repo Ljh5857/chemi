@@ -34,29 +34,16 @@ pageEncoding="UTF-8"%>
         <h3><strong>캠핑장 공지사항</strong></h3>
 
 			<hr>
-			<table border="1">
+    <table border="1">
         <thead>
            <tr>
               <th>번호</th>
               <th>제목</th>
               <th>조회수</th>
-              <c:if test="${sessionScope.loginAdminVo != null}">
-              <th><button onclick="deleteCheckedBoard();">❌</th>
-              </c:if>
            </tr>
         </thead>
         <tbody>
-  
-           <c:forEach items="${voList}" var="vo">
-              <tr>
-                 <td>번호</td>
-                 <td><a href="/app/board/detail?no=${vo.no}&writerNo=${vo.writerNo}">${vo.title}</a></td>
-                 <td>${vo.hit}</td>
-                 <c:if test="${sessionScope.loginAdminVo != null}">
-                 <td><input type="checkbox" value="${vo.no}"> </td>>
-                 </c:if>
-              </tr>
-           </c:forEach>  
+
         </tbody>
      </table>
          <!---------------------------------------------------------------------------------->
@@ -67,3 +54,32 @@ pageEncoding="UTF-8"%>
 
 	</body>
 </html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script>
+
+   $.ajax({
+      url : "http://127.0.0.1:8080/owner/api/notice/list",
+      method : "get",
+      data : {},
+      success : (x) => {
+
+         const voList = x;
+        
+         const tbody = document.querySelector("tbody")
+         let str = "";
+    
+         for(let i = 0; i < voList.length ; i++){
+               str += "<tr>"
+               str += "<td><a href='/owner/notice/detail?no=" + voList[i].no + "'>" + voList[i].no + "</a></td>"; 
+               str += "<td><a href='/owner/notice/detail?no=" + voList[i].no + "'>" + voList[i].title + "</a></td>";  
+               str += "<td>" + voList[i].hit + "</td>"
+               str += "</tr>"
+         }
+         tbody.innerHTML = str;
+      },
+      error : (error) => {
+         console.log(error);
+      },
+   });
+
+</script>

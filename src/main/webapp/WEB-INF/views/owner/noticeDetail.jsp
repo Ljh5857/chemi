@@ -31,18 +31,20 @@ pageEncoding="UTF-8"%>
         <section role="main" class="content-body" style="padding-top: 0px;">
 
         <!---------------------------------------------------------------------------------->
-        <h3><strong>공지사항 등록하기</strong></h3>
+        <h3><strong>공지사항 상세보기</strong></h3>
 
 			<hr>
-			<form  action="/owner/notice/insert" method="post"  >
-				<input type="text" name="title" placeholder="제목">
+
+				제목 ::   <input type="text" name="title" value="${vo.title}"> <input type="text" name="hit" value="${vo.hit}">
 				<br>
 				<br>
-				<textarea style="width: 400px; height: 300px;" name="content" placeholder="공지사항 내용"></textarea>
+				내용 ::   
 				<br>
 				<br>
-				<input type="submit" value="작성하기">
-			</form>
+				<textarea style="width: 500px; height: 300px;" name="content">${vo.content}</textarea>
+
+
+
          <!---------------------------------------------------------------------------------->
 </section>
 

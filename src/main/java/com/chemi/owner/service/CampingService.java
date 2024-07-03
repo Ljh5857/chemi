@@ -6,8 +6,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
-
 @Service
 @RequiredArgsConstructor
 @Transactional
@@ -28,7 +26,7 @@ public class CampingService {
         return dao.editCamp(tel , ownerNo);
     }
 
-    public int updateFacility(String name) {
-        return dao.updateFacility(name);
+    public int updateFacility(String no, String name) {
+        return dao.updateFacility(no, name);
     }
 }

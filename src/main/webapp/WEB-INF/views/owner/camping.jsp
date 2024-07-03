@@ -31,18 +31,33 @@ pageEncoding="UTF-8"%>
         <section role="main" class="content-body" style="padding-top: 0px;">
 
         <!---------------------------------------------------------------------------------->
-        <h3><strong>공지사항 등록하기</strong></h3>
+        <h3><strong>내 캠핑장</strong></h3>
 
 			<hr>
-			<form  action="/owner/notice/insert" method="post"  >
-				<input type="text" name="title" placeholder="제목">
+				캠핑장 썸네일 이미지 <img style="height: 300px; width: 300px;" src="${voList.zoneLayoutImg}" >
 				<br>
 				<br>
-				<textarea style="width: 400px; height: 300px;" name="content" placeholder="공지사항 내용"></textarea>
+				지역 :: <input type="text" name="area" value="${voList.area}" readonly>
 				<br>
 				<br>
-				<input type="submit" value="작성하기">
-			</form>
+				캠핑장 타입 :: <input type="text" name="campsiteCategory" value="${voList.campsiteCategory}" readonly>
+				<br>
+				<br>
+				캠핑장 이름 :: <input type="text" name="name" value="${voList.name}" readonly>
+				<br>
+                <br>
+				캠핑장 전화번호 :: <input type="text" name="tel" value="${voList.tel}" readonly>
+				<br>
+				<br>
+				캠핑장 주소 :: <input type="text" name="address" value="${voList.address}" readonly>
+				<br>
+				<br>
+			    캠핑장 한줄 소개 :: <input type="text" name="basicInfo" value="${voList.basicInfo}" readonly>
+				<br>
+				<br>
+				캠핑장 소개 :: <textarea style="width: 400px; height: 300px;" name="introduction" readonly>${voList.introduction}</textarea>
+				
+
          <!---------------------------------------------------------------------------------->
 </section>
 

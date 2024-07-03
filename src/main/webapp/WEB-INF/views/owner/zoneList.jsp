@@ -31,18 +31,21 @@ pageEncoding="UTF-8"%>
         <section role="main" class="content-body" style="padding-top: 0px;">
 
         <!---------------------------------------------------------------------------------->
-        <h3><strong>공지사항 등록하기</strong></h3>
+        <h3><strong>캠핑장 공지사항</strong></h3>
 
 			<hr>
-			<form  action="/owner/notice/insert" method="post"  >
-				<input type="text" name="title" placeholder="제목">
-				<br>
-				<br>
-				<textarea style="width: 400px; height: 300px;" name="content" placeholder="공지사항 내용"></textarea>
-				<br>
-				<br>
-				<input type="submit" value="작성하기">
-			</form>
+    <table border="1">
+        <thead>
+           <tr>
+              <th>존 이름</th>
+              <th>최대인원</th>
+              <th>가격</th>
+           </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+     </table>
          <!---------------------------------------------------------------------------------->
 </section>
 
@@ -51,3 +54,32 @@ pageEncoding="UTF-8"%>
 
 	</body>
 </html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script>
+
+   $.ajax({
+      url : "http://127.0.0.1:8080/owner/api/zone",
+      method : "get",
+      data : {},
+      success : (x) => {
+
+         const voList = x;
+
+         const tbody = document.querySelector("tbody")
+         let str = "";
+
+         for(let i = 0; i < voList.length ; i++){
+               str += "<tr>"
+               str += "<td>" + voList[i].name + "</td>";
+               str += "<td>" + voList[i].maxPeople +"</td>";
+               str += "<td>" + voList[i].price + "</td>"
+               str += "</tr>"
+         }
+         tbody.innerHTML = str;
+      },
+      error : (error) => {
+         console.log(error);
+      },
+   });
+
+</script>

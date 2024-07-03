@@ -27,7 +27,7 @@ public class CampingDao {
         return mapper.editCamp(tel , ownerNo);
     }
 
-    public int updateFacility(String name) {
-        return mapper.updateFacility(name);
+    public int updateFacility(String no ,String name) {
+        return mapper.updateFacility(no, name);
     }
 }

@@ -35,7 +35,7 @@ pageEncoding="UTF-8"%>
 
 			<hr>
 			<form  action="/owner/camp/insert" method="post" enctype="multipart/form-data" >
-				<input type="text" name="ownerNo" value="2" hidden>
+
 				<input type="text" name="area" placeholder="지역">
 				<br>
 				<br>
