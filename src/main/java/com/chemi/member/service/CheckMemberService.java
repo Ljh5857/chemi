@@ -9,11 +9,11 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class CheckMemberService {
 
-    private final CheckMemberDao chdao;
+    private final CheckMemberDao dao;
 
     public String checkId(MemberVo vo) {
 
-        return chdao.checkId(vo);
+        return dao.checkId(vo);
 
     }
 }
