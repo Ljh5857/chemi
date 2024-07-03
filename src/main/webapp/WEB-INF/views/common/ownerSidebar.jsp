@@ -39,7 +39,7 @@
                             <ul class="nav nav-children">
 
                                 <li>
-                                    <a href="/campBusiness/campCalender">캠핑장 정보</a>
+                                    <a href="/owner/camping">캠핑장 정보</a>
                                 </li>
 
                                 <li>
@@ -51,7 +51,7 @@
                                 </li>
 
                                 <li>
-                                    <a href="/campBusiness/listMainSite">캠핑장-주요시설 목록</a>
+                                    <a href="/owner/facility">캠핑장-주요시설 등록</a>
                                 </li>
 
                                 <li>

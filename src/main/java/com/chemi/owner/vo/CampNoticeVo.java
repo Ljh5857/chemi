@@ -6,7 +6,7 @@ import lombok.Data;
 public class CampNoticeVo {
 
     private String no;
-    private String campsiteNo;
+    private String ownerNo;
     private String title;
     private String content;
     private String uploadDate;

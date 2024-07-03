@@ -12,9 +12,9 @@ import java.util.List;
 public interface ZoneMapper {
 
     @Insert("INSERT INTO ZONE\n" +
-            "(NO, CAMPSITE_NO, SEASON_NO, NAME, MAX_PEOPLE ,PRICE)\n" +
+            "(NO, OWNER_NO, SEASON_NO, NAME, MAX_PEOPLE ,PRICE)\n" +
             "VALUES\n" +
-            "(SEQ_ZONE_NO, #{vo.campsiteNo}, #{vo.seasonNo}, #{vo.name}, #{vo.maxPeople}, #{vo.price} )")
+            "(SEQ_ZONE_NO.NEXTVAL, #{ownerNo}, '1', #{name}, #{maxPeople}, #{price} )")
     int zoneInsert(ZoneVo vo);
 
     @Select("SELECT Z.CAMPSITE_NO , Z.SEASON_NO, Z.MAX_PEOPLE, Z.PRICE, Z.NAME\n" +

@@ -31,8 +31,7 @@ public class OwnerController {
     }
     //로그인
     @PostMapping("login")
-    public String login(OwnerVo vo , HttpServletRequest req){
-        HttpSession session = req.getSession();
+    public String login(OwnerVo vo , HttpSession session){
         System.out.println("vo = " + vo);
         OwnerVo loginOwnerVo = service.login(vo);
 
@@ -59,7 +58,7 @@ public class OwnerController {
         if(result != 1){
             throw new Exception("회원가입 실패...");
         }
-        return "owner/login";
+        return "redirect:/owner/login";
 
     }
     //비밀번호 변경 (화면)

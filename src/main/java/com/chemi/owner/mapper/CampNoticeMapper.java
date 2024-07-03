@@ -11,20 +11,15 @@ import java.util.List;
 @Mapper
 public interface CampNoticeMapper {
 
-    @Select("SELECT CN.NO, CN.TITLE, CN.CONTENT, CN.UPLOAD_DATE,CN.HIT\n" +
-            "FROM CAMPSITE_NOTICE CN\n" +
-            "JOIN CAMPSITE C\n" +
-            "ON CN.CAMPSITE_NO = C.NO\n" +
-            "JOIN OWNER O\n" +
-            "ON C.OWNER_NO = O.NO\n" +
-            "WHERE O.NO = #{no} AND CN.DEL_YN = 'N'\n" +
-            ";")
+    @Select("SELECT *\n" +
+            "FROM CAMPSITE_NOTICE\n" +
+            "WHERE OWNER_NO = #{no}")
     List<CampNoticeVo> getCampNotice(String no);
 
     @Insert("INSERT INTO CAMPSITE_NOTICE\n" +
-            "(NO, CAMPSITE_NO, TITLE, CONTENT)\n" +
+            "(NO, OWNER_NO, TITLE, CONTENT)\n" +
             "VALUES\n" +
-            "(SEQ_CAMPSITE_NOTICE.NEXTVAL, #{campsiteNo} , #{title} , #{content})")
+            "(SEQ_CAMPSITE_NOTICE_NO.NEXTVAL, #{ownerNo} , #{title} , #{content})")
     int insertNotice(CampNoticeVo vo);
 
     @Select("SELECT * FROM CAMPSITE_NOTICE WHERE NO = #{no} AND DEL_YN = 'N'")

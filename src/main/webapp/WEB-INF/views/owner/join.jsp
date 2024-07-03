@@ -106,17 +106,6 @@
 												</div>
 											</div>
 
-											<div id="add_b_campName" class="form-group row">
-												<label for="add_b_campName"
-													class="col-sm-offset-1 col-sm-3 control-label"><strong>캠핑장명</strong></label>
-												<div class="col-sm-6">
-													<input id="add_b_campName" name="campName" class="form-control" type="text"
-														placeholder="캠핑장명을 입력해 주세요." />
-												</div>
-											</div>
-
-
-
 											<div class="form-group row">
 												<label for="add_b_name" class="col-sm-offset-1 col-sm-3 control-label"><strong>사업자대표
 														이름</strong></label>
@@ -137,9 +126,9 @@
 
 											<div class="form-group row">
 												<label for="add_b_nick"
-													class="col-sm-offset-1 col-sm-3 control-label"><strong>닉네임</strong></label>
+													class="col-sm-offset-1 col-sm-3 control-label"><strong>사용할 닉네임</strong></label>
 												<div class="col-sm-6">
-													<input id="add_b_nick" name="nick" class="form-control" type="text" placeholder="이름을 입력하세요" />
+													<input id="add_b_nick" name="nick" class="form-control" type="text" placeholder="닉네임을 입력하세요" />
 												</div>
 											</div>
 

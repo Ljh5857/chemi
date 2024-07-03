@@ -25,6 +25,6 @@ public interface CampingMapper {
     @Update("UPDATE CAMPSITE SET TEL = #{tel} WHERE OWNER_NO = #{ownerNo}")
     int editCamp(String tel, String ownerNo);
 
-    @Update("UPDATE CAMPSITE SET  ")
-    int updateFacility(String name);
+    @Update("UPDATE CAMPSITE SET ${name} = 'Y' WHERE OWNER_NO = #{no} ")
+    int updateFacility(String no, String name);
 }

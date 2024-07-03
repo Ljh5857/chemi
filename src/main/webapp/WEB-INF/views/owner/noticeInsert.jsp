@@ -34,11 +34,11 @@ pageEncoding="UTF-8"%>
         <h3><strong>공지사항 등록하기</strong></h3>
 
 			<hr>
-			<form  action="/owner/notice/insert" method="post" enctype="multipart/form-data" >
+			<form  action="/owner/notice/insert" method="post"  >
 				<input type="text" name="title" placeholder="제목">
 				<br>
 				<br>
-				<textarea style="width: 400px; height: 300px;" name="content" placeholder="캠핑장 소개를 적어주세요"></textarea>
+				<textarea style="width: 400px; height: 300px;" name="content" placeholder="공지사항 내용"></textarea>
 				<br>
 				<br>
 				<input type="submit" value="작성하기">
