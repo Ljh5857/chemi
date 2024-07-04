@@ -1,10 +1,7 @@
 package com.chemi.admin.service;
 
 import com.chemi.admin.dao.AdminDao;
-import com.chemi.admin.vo.AdminVo;
-import com.chemi.admin.vo.CombinedResponse;
-import com.chemi.admin.vo.PrdImgVo;
-import com.chemi.admin.vo.ProductVo;
+import com.chemi.admin.vo.*;
 import com.chemi.member.vo.MemberVo;
 import com.chemi.owner.vo.OwnerVo;
 import lombok.RequiredArgsConstructor;
@@ -84,8 +81,12 @@ public class AdminService {
 
 
     public boolean deleteProduct(String no) {
+        System.out.println("AdminService.deleteProduct");
+        System.out.println("no = " + no);
         try {
+            dao.deleteProductImg(no);
             dao.deleteProduct(no);
+
             return true;
         } catch (Exception e) {
             logger.error("Error deleting product: ", e);
@@ -98,6 +99,11 @@ public class AdminService {
 
         return dao.getProductByNo(vo);
 
+    }
+
+    public void setRefund(RefundVo vo) {
+
+        dao.setRefund(vo);
 
     }
 }

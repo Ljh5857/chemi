@@ -4,6 +4,7 @@ import com.chemi.admin.mapper.AdminMapper;
 import com.chemi.admin.vo.AdminVo;
 import com.chemi.admin.vo.PrdImgVo;
 import com.chemi.admin.vo.ProductVo;
+import com.chemi.admin.vo.RefundVo;
 import com.chemi.member.vo.MemberVo;
 import com.chemi.owner.vo.OwnerVo;
 import lombok.RequiredArgsConstructor;
@@ -55,13 +56,17 @@ public class AdminDao {
         return mapper.getAllProducts();
     }
 
-    public void deleteProduct(String productNo) {
-        mapper.deleteProduct();
+    public void deleteProduct(String no) {
+        System.out.println("AdminDao.deleteProduct");
+        System.out.println("no = " + no);
+        mapper.deleteProduct(no);
     }
 
 
-    public void deleteProductImg(String productImgNo) {
-        mapper.deleteProductImg();
+    public void deleteProductImg(String no) {
+        System.out.println("AdminDao.deleteProductImg");
+        System.out.println("no = " + no);
+        mapper.deleteProductImg(no);
     }
 
     public String login(AdminVo vo) {
@@ -71,5 +76,11 @@ public class AdminDao {
 
     public ProductVo getProductByNo(ProductVo vo) {
         return mapper.getProductByNo(vo);
+    }
+
+    public void setRefund(RefundVo vo) {
+
+        mapper.setRefund(vo);
+
     }
 }

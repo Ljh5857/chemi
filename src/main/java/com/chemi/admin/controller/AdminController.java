@@ -1,10 +1,7 @@
 package com.chemi.admin.controller;
 
 import com.chemi.admin.service.AdminService;
-import com.chemi.admin.vo.AdminVo;
-import com.chemi.admin.vo.CombinedResponse;
-import com.chemi.admin.vo.PrdImgVo;
-import com.chemi.admin.vo.ProductVo;
+import com.chemi.admin.vo.*;
 import com.chemi.member.vo.MemberVo;
 import com.chemi.owner.vo.OwnerVo;
 import jakarta.servlet.http.HttpSession;
@@ -31,7 +28,6 @@ public class AdminController {
 
         return "admin/adminMain";
     }
-
 
     @GetMapping("login")
     public String login(){
@@ -123,10 +119,11 @@ public class AdminController {
     }
 
     @GetMapping("productUpdate")
-    public String showProductUpdate(ProductVo vo) {
+    public String showProductUpdate(ProductVo vo, Model model) {
         System.out.println("AdminController.showProductUpdate");
-        service.getProductByNo(vo);
-        System.out.println("vo = " + vo);
+        ProductVo product = service.getProductByNo(vo);
+        model.addAttribute("product", product);
+        System.out.println("product = " + product);
         return "admin/productUpdate";
     }
 
@@ -136,7 +133,7 @@ public class AdminController {
         return "redirect:/admin/productList";
     }
 
-    @DeleteMapping("productDelete")
+    @PostMapping("productDelete")
     public String deleteProduct(@RequestParam("no") String no, RedirectAttributes redirectAttributes) {
         boolean isDeleted = service.deleteProduct(no);
         if (isDeleted) {
@@ -146,6 +143,23 @@ public class AdminController {
         }
         return "redirect:/admin/productList";
     }
+
+    @PostMapping("setRefund")
+    public String setRefund(RefundVo vo){
+
+        service.setRefund(vo);
+
+        return "redirect:/admin/setRefund";
+    }
+
+    @GetMapping("setRefund")
+    public String showSetRefund(RefundVo vo){
+
+        return "admin/setRefund";
+    }
+
+
+
 
 
 
