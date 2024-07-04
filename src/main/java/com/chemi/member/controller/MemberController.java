@@ -4,6 +4,7 @@ import com.chemi.member.service.MemberService;
 import com.chemi.member.vo.MemberVo;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,6 +28,10 @@ public class MemberController {
     return result;
   }
 
+  @GetMapping("login")
+  public String login(){
+    return "user/login";
+  }
   @PostMapping("login")
   public String login(MemberVo vo, HttpSession ss) {
     String loginResult = service.login(vo);
@@ -56,8 +61,16 @@ public class MemberController {
   }
 
   @PostMapping("delUser")
-  public String delUser(@RequestBody MemberVo vo) {
-    return service.delUser(vo);
+  public ResponseEntity<String> delUser(@RequestBody MemberVo vo) {
+
+    int result = service.delUser(vo);
+
+    if(result != 1){
+      throw new RuntimeException();
+    }
+
+    return ResponseEntity.ok("회원탈퇴 성공");
+
   }
 
   @GetMapping("myPage")

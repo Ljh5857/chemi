@@ -1,19 +1,18 @@
 package com.chemi.campuser.controller;
 
 import com.chemi.campuser.service.CampUserService;
-import com.chemi.owner.vo.CampDetailVo;
-import com.chemi.owner.vo.CampImgVo;
+import com.chemi.campuser.vo.*;
 import com.chemi.owner.vo.CampingVo;
-import com.chemi.owner.vo.ZoneVo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-@Controller
+@RestController
 @RequiredArgsConstructor
 @RequestMapping("Camp")
 public class CampUserController {
@@ -22,34 +21,43 @@ public class CampUserController {
 
     //캠핑장 목록조회(캠핑장 데이터만)
     @GetMapping
-    public List<CampingVo> CampList(){
+    public List<CampSiteVo> getCampList(){
 
-        List<CampingVo> CampingVoList = service.CampList();
+        List<CampSiteVo> campSiteList = service.getCampSiteList();
+        System.out.println("campSiteList = " + campSiteList);
 
-    return CampingVoList;
+    return campSiteList;
 
 
 }
 
     //캠핑장 이름으로 검색
-    @GetMapping()
-    public List<CampingVo> campNameSelect(){
+    @GetMapping("campName")
+    public List<CampSiteVo> campNameSelect(@RequestParam("name") String name){
 
-        List<CampingVo> CampingVoList = service.campNameSelect();
-
-        return CampingVoList;
+        List<CampSiteVo> campSiteVoList = service.campNameSelect(name);
+        System.out.println("campSiteVoList = " + campSiteVoList);
+        return campSiteVoList;
     }
 
-    //캠핑장 상세조회(캠핑장 이미지까지)
     @GetMapping("Detail")
-    public CampDetailVo campimgList(@RequestParam String campNo) {
-        CampingVo campingVo = service.getCampingDetail(campNo);
-        List<CampImgVo> campImgVoList = service.getCampImgList(campNo);
+    public CampDetailVo campDetail(@RequestParam("ownerNo") String ownerNo) {
+        List<CampImgVo> campImgVoList = service.getCampImgList(ownerNo);
+
+        List<CampNoticeVo> campNoticeVoList = service.getCampNoticeList(ownerNo);
+        List<RefundVo> refundVoList = service.getRefundList(ownerNo);
+//        List<SeasonVo> seasonVoList = service.getSeasonList(ownerNo);
+        List<CampZoneVo> campZoneVoList = service.getCampZoneList(ownerNo);
 
         CampDetailVo detailVo = new CampDetailVo();
-        detailVo.setCampingVo(campingVo);
+
         detailVo.setCampImgVoList(campImgVoList);
 
+        detailVo.setCampNoticeVoList(campNoticeVoList);
+        detailVo.setRefundVoList(refundVoList);
+//        detailVo.setSeasonVoList(seasonVoList);
+        detailVo.setCampZoneVoList(campZoneVoList);
+        System.out.println("detailVo = " + detailVo);
         return detailVo;
     }
 
