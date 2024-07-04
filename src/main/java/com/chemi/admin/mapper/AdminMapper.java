@@ -3,17 +3,14 @@ package com.chemi.admin.mapper;
 import com.chemi.admin.vo.AdminVo;
 import com.chemi.admin.vo.PrdImgVo;
 import com.chemi.admin.vo.ProductVo;
-import com.chemi.member.vo.MemberVo;
+import com.chemi.admin.vo.RefundVo;
 import com.chemi.owner.vo.OwnerVo;
 import org.apache.ibatis.annotations.*;
-import org.springframework.ui.Model;
 
 import java.util.List;
 
 @Mapper
 public interface AdminMapper {
-
-
 
     @Update("UPDATE OWNER SET JOIN_APPROVAL_YN = 'Y' WHERE NO = #{ownerVo.no}")
     boolean updateJoinApproval(@Param("ownerVo") OwnerVo ownerVo);
@@ -40,15 +37,18 @@ public interface AdminMapper {
     @Select("SELECT NO, CATEGORY_NO, NAME, PRICE, PROD_EXPLAIN, STOCK FROM PRODUCT")
     List<ProductVo> getAllProducts();
 
-    @Delete("DELETE FROM PRODUCT WHERE NO = #{productNo}")
-    void deleteProduct();
+    @Update("UPDATE PRODUCT SET DEL_YN = 'Y' WHERE NO = #{product.no}")
+    void deleteProduct(String no);
 
-    @Delete("DELETE FROM PRODUCT WHERE NO = #{imgNo}")
-    void deleteProductImg();
+    @Update("UPDATE PRD_IMG SET DEL_YN = 'Y' WHERE PRD_NO = #{product.no}")
+    void deleteProductImg(String no);
 
     @Select("SELECT * FROM ADMIN WHERE ID = #{id} AND PWD = #{pwd}")
     String login(AdminVo vo);
 
     @Select("SELECT * FROM PRODUCT WHERE NO = #{no}")
     ProductVo getProductByNo(ProductVo vo);
+
+    @Update("UPDATE REFUND SET REFUND_PERCENT = #{refundPercent} WHERE REFUND_PERIOD = #{refundPeriod}")
+    void setRefund(RefundVo vo);
 }
