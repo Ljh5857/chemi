@@ -1,7 +1,7 @@
 package com.chemi.campuser.service;
 
 import com.chemi.campuser.dao.CampUserDao;
-import com.chemi.owner.vo.CampImgVo;
+import com.chemi.campuser.vo.*;
 import com.chemi.owner.vo.CampingVo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -15,21 +15,33 @@ public class CampUserService {
 
     private final CampUserDao dao;
 
-
-    public List<CampingVo> CampList() {
-
-        return dao.CampList();
+    public List<CampImgVo> getCampImgList(String ownerNo) {
+        return dao.getCampImgList(ownerNo);
     }
 
-    public CampingVo getCampingDetail(String campNo) {
-        return dao.getCampingDetail(campNo);
+    public List<CampSiteVo> campNameSelect(String name) {
+        return dao.campNameSelect(name);
     }
 
-    public List<CampImgVo> getCampImgList(String campNo) {
-        return dao.getCampImgList(campNo);
+    public List<CampNoticeVo> getCampNoticeList(String ownerNo) {
+        return dao.getCampNoticeList(ownerNo);
     }
 
-    public List<CampingVo> campNameSelect() {
-        return dao.campNameSelect();
+//    public List<SeasonVo> getSeasonList(String ownerNo) {
+//        return dao.getSeasonList(ownerNo);
+//    }
+
+    public List<RefundVo> getRefundList(String ownerNo) {
+        return dao.getrefundList(ownerNo);
     }
+
+    public List<CampSiteVo> getCampSiteList() {
+        return dao.getCampSiteList();
+    }
+
+    public List<CampZoneVo> getCampZoneList(String ownerNo) {
+        return dao.getCampZoneList(ownerNo);
+    }
+
+
 }

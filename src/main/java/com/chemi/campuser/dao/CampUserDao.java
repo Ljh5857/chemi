@@ -1,7 +1,7 @@
 package com.chemi.campuser.dao;
 
 import com.chemi.campuser.mapper.CampUserMapper;
-import com.chemi.owner.vo.CampImgVo;
+import com.chemi.campuser.vo.*;
 import com.chemi.owner.vo.CampingVo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
@@ -13,20 +13,34 @@ import java.util.List;
 public class CampUserDao {
     private final CampUserMapper mapper;
 
-
-    public List<CampingVo> CampList() {
-
-        return mapper.CampList();
-    }
-    public CampingVo getCampingDetail(String campNo) {
-        return mapper.getCampingDetail(campNo);
+    public List<CampImgVo> getCampImgList(String ownerNo) {
+        return mapper.getCampImgList(ownerNo);
     }
 
-    public List<CampImgVo> getCampImgList(String campNo) {
-        return mapper.getCampImgList(campNo);
+    public List<CampSiteVo> campNameSelect(String name) {
+        return mapper.campNameSelect(name);
     }
 
-    public List<CampingVo> campNameSelect() {
-        return mapper.campNameSelect();
+    public List<CampNoticeVo> getCampNoticeList(String ownerNo) {
+        return mapper.getCampNoticeList(ownerNo);
     }
+
+    public List<RefundVo> getrefundList(String ownerNo) {
+        return mapper.getrefundList(ownerNo);
+    }
+
+//    public List<SeasonVo> getSeasonList(String ownerNo) {
+//        return mapper.getSeasonList(ownerNo);
+//    }
+
+    public List<CampSiteVo> getCampSiteList() {
+        return mapper.getCampSiteList();
+    }
+
+    public List<CampZoneVo> getCampZoneList(String ownerNo) {
+        return mapper.getCampZoneList(ownerNo);
+    }
+
+
+
 }

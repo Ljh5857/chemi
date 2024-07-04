@@ -68,13 +68,14 @@ public class MemberService {
     }
   }
 
-  public String delUser(MemberVo vo) {
+  public int delUser(MemberVo vo) {
     int result = dao.delUser(vo);
-    if (result > 0) {
-      return "회원탈퇴 성공";
-    } else {
-      return "회원탈퇴 실패";
-    }
+
+      return result;
+  }
+
+  public String myPage(MemberVo vo) {
+    return dao.myPage(vo);
   }
 
 
@@ -94,7 +95,5 @@ public class MemberService {
     return Pattern.matches("^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$", email);
   }
 
-  public String myPage(MemberVo vo) {
-    return dao.myPage(vo);
-  }
+
 }
